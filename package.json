@@ -1,0 +1,34 @@
+{
+  "name": "vr-fps-cafe-pwa",
+  "version": "1.0.0",
+  "description": "VR FPS Game Cafe Progressive Web App",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "serve dist"
+  },
+  "dependencies": {
+    "preact": "^10.19.3",
+    "preact-router": "^4.1.2",
+    "firebase": "^10.7.1",
+    "@preact/signals": "^1.2.2"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.7.0",
+    "vite": "^5.0.10",
+    "serve": "^14.2.1"
+  },
+  "keywords": [
+    "vr",
+    "fps",
+    "game",
+    "cafe",
+    "pwa",
+    "preact",
+    "firebase"
+  ],
+  "author": "VR FPS Cafe Team",
+  "license": "MIT"
+} 
