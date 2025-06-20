@@ -215,4 +215,4 @@ MIT License - see LICENSE file for details
 
 ## Support
 
-For support, please contact the development team or create an issue in the repository. 
+For support, please contact the development team or create an issue in the repository.
