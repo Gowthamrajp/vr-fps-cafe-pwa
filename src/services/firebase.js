@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, connectAuthEmulator } from 'firebase/auth';
-import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 import { getAnalytics } from "firebase/analytics";
 
@@ -24,23 +24,7 @@ export const db = getFirestore(app);
 export const storage = getStorage(app);
 export const analytics = getAnalytics(app);
 
-// Connect to emulators in development
-if (location.hostname === 'localhost') {
-  try {
-    // Connect to Firebase Auth emulator
-    connectAuthEmulator(auth, 'http://127.0.0.1:9099');
-    console.log('Connected to Auth emulator');
-  } catch (error) {
-    console.log('Auth emulator already connected or unavailable');
-  }
-  
-  try {
-    // Connect to Firestore emulator
-    connectFirestoreEmulator(db, '127.0.0.1', 8080);
-    console.log('Connected to Firestore emulator');
-  } catch (error) {
-    console.log('Firestore emulator already connected or unavailable');
-  }
-}
+// Log successful initialization
+console.log('Firebase initialized successfully with Blaze plan features');
 
 export default app; 

@@ -47,7 +47,7 @@ export default function Stats({ user }) {
         { id: 1, name: 'First Blood', description: 'Get your first kill', unlocked: true },
         { id: 2, name: 'Headshot Master', description: 'Get 100 headshots', unlocked: true },
         { id: 3, name: 'Victory Streak', description: 'Win 5 matches in a row', unlocked: true },
-        { id: 4, name: 'Team Player', description: 'Join a team', unlocked: false },
+        { id: 4, name: 'Social Player', description: 'Play 10 multiplayer matches', unlocked: false },
         { id: 5, name: 'Legendary', description: 'Reach 1000 kills', unlocked: true },
         { id: 6, name: 'Marathon Gamer', description: 'Play for 100+ hours', unlocked: true }
       ];
@@ -80,26 +80,30 @@ export default function Stats({ user }) {
   }
 
   return (
-    <div className="container" style="padding-top: 32px;">
+    <div className="container main-content" style="padding-top: 32px;">
       <h1>📊 My Statistics</h1>
 
       {/* Main Stats */}
       <div className="stats-grid">
-        <div className="stat-card">
+        <div className="stat-card highlight">
+          <div className="stat-icon">🔥</div>
           <div className="stat-value">{stats.kills}</div>
-          <div className="stat-label">Total Kills</div>
+          <div className="stat-label">Kills</div>
         </div>
         <div className="stat-card">
+          <div className="stat-icon">⚔️</div>
           <div className="stat-value">{calculateKDRatio()}</div>
           <div className="stat-label">K/D Ratio</div>
         </div>
         <div className="stat-card">
+          <div className="stat-icon">🏆</div>
           <div className="stat-value">{calculateWinRate()}%</div>
           <div className="stat-label">Win Rate</div>
         </div>
         <div className="stat-card">
+          <div className="stat-icon">⏱️</div>
           <div className="stat-value">{stats.playTime}h</div>
-          <div className="stat-label">Play Time</div>
+          <div className="stat-label">Hours</div>
         </div>
       </div>
 
@@ -186,6 +190,87 @@ export default function Stats({ user }) {
       </div>
 
       <style jsx>{`
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+          margin-bottom: 32px;
+        }
+
+        .stat-card {
+          background: white;
+          border-radius: 20px;
+          padding: 16px 12px;
+          text-align: center;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .stat-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .stat-card.highlight {
+          background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+          color: white;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+        }
+
+        .stat-card.highlight::before {
+          opacity: 0;
+        }
+
+        .stat-card:not(.highlight):hover {
+          transform: translateY(-4px) scale(1.02);
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+          border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .stat-card:not(.highlight):hover::before {
+          opacity: 1;
+        }
+
+        .stat-icon {
+          font-size: 28px;
+          margin-bottom: 6px;
+          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .stat-card.highlight .stat-icon {
+          filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+        }
+
+        .stat-value {
+          font-size: 1.8rem;
+          font-weight: 800;
+          margin-bottom: 2px;
+          letter-spacing: -0.02em;
+        }
+
+        .stat-label {
+          font-size: 0.75rem;
+          opacity: 0.75;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .stat-card.highlight .stat-label {
+          opacity: 0.9;
+        }
+
         .stat-rows {
           display: flex;
           flex-direction: column;
@@ -250,6 +335,31 @@ export default function Stats({ user }) {
         }
         
         @media (max-width: 768px) {
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+          }
+
+          .stat-card {
+            padding: 14px 10px;
+            border-radius: 18px;
+          }
+
+          .stat-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+          }
+
+          .stat-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+          }
+
+          .stat-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.3px;
+          }
+
           .achievements-grid {
             grid-template-columns: 1fr;
           }

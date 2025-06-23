@@ -30,11 +30,40 @@ body {
   min-height: 100vh;
 }
 
+/* Mobile bottom navigation spacing */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 80px; /* Space for bottom navigation */
+  }
+}
+
 /* Layout Components */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+.main-content {
+  padding-bottom: 20px;
+}
+
+/* Page wrapper for proper spacing */
+.page-wrapper {
+  min-height: calc(100vh - 80px);
+  padding: 20px;
+}
+
+/* Mobile main content spacing */
+@media (max-width: 768px) {
+  .main-content {
+    padding-bottom: 24px; /* Extra space above bottom nav */
+  }
+
+  .page-wrapper {
+    min-height: calc(100vh - 160px); /* Account for top nav + bottom nav */
+    padding: 16px;
+  }
 }
 
 .card {
@@ -43,6 +72,99 @@ body {
   box-shadow: var(--shadow);
   padding: 24px;
   margin-bottom: 20px;
+}
+
+/* Player ID Card Styles */
+.player-id-card {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.player-id-header h3 {
+  color: white;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.player-id-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.player-id-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 16px;
+  backdrop-filter: blur(10px);
+}
+
+.player-id-code {
+  flex: 1;
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.copy-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+  white-space: nowrap;
+}
+
+.copy-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.copy-button.copied {
+  background: rgba(72, 187, 120, 0.8);
+  border-color: rgba(72, 187, 120, 0.9);
+}
+
+.copy-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .player-id-display {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .player-id-code {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+  
+  .copy-button {
+    width: 100%;
+    padding: 12px;
+  }
 }
 
 .grid {
@@ -79,7 +201,7 @@ h4 { font-size: 1.25rem; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
+  padding: 14px 24px;
   border: none;
   border-radius: var(--border-radius);
   font-size: 16px;
@@ -87,7 +209,9 @@ h4 { font-size: 1.25rem; }
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-height: 48px;
+  min-height: 52px;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .btn-primary {
@@ -98,6 +222,17 @@ h4 { font-size: 1.25rem; }
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+  background: var(--primary-color);
+  color: white;
 }
 
 .btn-secondary {
@@ -127,38 +262,61 @@ h4 { font-size: 1.25rem; }
 
 /* Forms */
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .form-label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
+  margin-bottom: 10px;
+  font-weight: 600;
   color: var(--text-primary);
+  font-size: 15px;
 }
 
 .form-input {
   width: 100%;
-  padding: 12px 16px;
-  border: 1px solid var(--border-color);
+  padding: 16px 20px;
+  border: 2px solid var(--border-color);
   border-radius: var(--border-radius);
   font-size: 16px;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  min-height: 56px;
+  box-sizing: border-box;
+  background: white;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .form-input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+  transform: scale(1.02);
 }
 
 .form-select {
   width: 100%;
-  padding: 12px 16px;
-  border: 1px solid var(--border-color);
+  padding: 16px 20px;
+  border: 2px solid var(--border-color);
   border-radius: var(--border-radius);
   font-size: 16px;
   background: white;
+  min-height: 56px;
+  box-sizing: border-box;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  padding-right: 48px;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
 }
 
 /* Navigation */
@@ -242,16 +400,17 @@ h4 { font-size: 1.25rem; }
 .leaderboard-item {
   display: flex;
   align-items: center;
-  padding: 16px;
+  padding: 12px 16px;
   background: white;
   border-radius: var(--border-radius);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   box-shadow: var(--shadow);
+  min-height: 60px;
 }
 
 .rank {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   background: var(--primary-color);
   color: white;
   border-radius: 50%;
@@ -259,7 +418,9 @@ h4 { font-size: 1.25rem; }
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  margin-right: 16px;
+  margin-right: 12px;
+  font-size: 0.9rem;
+  flex-shrink: 0;
 }
 
 .rank.gold { background: #ffd700; }
@@ -268,51 +429,167 @@ h4 { font-size: 1.25rem; }
 
 .player-info {
   flex: 1;
+  min-width: 0;
 }
 
 .player-name {
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .player-details {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-stats {
+  text-align: right;
+  flex-shrink: 0;
+  min-width: 80px;
 }
 
 .player-score {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--primary-color);
+  margin-bottom: 2px;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .container {
-    padding: 0 16px;
+    padding: 0 20px;
   }
   
-  .navbar-nav {
-    gap: 16px;
-  }
-  
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+  h3 { font-size: 1.4rem; }
   
   .grid-2,
   .grid-3,
   .grid-4 {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .card {
+    padding: 20px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+  }
+  
+  .btn {
+    padding: 16px 24px;
+    font-size: 16px;
+    min-height: 56px;
+    border-radius: 14px;
+    font-weight: 600;
+  }
+  
+  .btn-full {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  
+  .form-input,
+  .form-select {
+    padding: 18px 20px;
+    font-size: 16px;
+    min-height: 58px;
+    border-radius: 14px;
+    border-width: 2px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    font-size: 16px;
+    margin-bottom: 8px;
   }
   
   .leaderboard-item {
-    flex-direction: column;
-    text-align: center;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    min-height: 52px;
   }
   
   .rank {
-    margin-right: 0;
-    margin-bottom: 12px;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    font-size: 0.8rem;
+  }
+  
+  .player-name {
+    font-size: 0.9rem;
+  }
+  
+  .player-details {
+    font-size: 0.75rem;
+  }
+  
+  .player-score {
+    font-size: 1rem;
+  }
+  
+  .player-stats {
+    min-width: 70px;
+  }
+  
+  .stats-grid {
+    gap: 16px;
+  }
+  
+  .stat-card {
+    padding: 20px;
+    border-radius: 16px;
+    min-height: 100px;
+  }
+  
+  .stat-value {
+    font-size: 2.2rem;
+  }
+  
+  .stat-label {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  
+  .btn {
+    padding: 14px 20px;
+    min-height: 52px;
+    font-size: 15px;
+  }
+  
+  .form-input,
+  .form-select {
+    padding: 16px 18px;
+    min-height: 54px;
+    font-size: 16px;
   }
 }
 
@@ -346,4 +623,499 @@ h4 { font-size: 1.25rem; }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile-specific utility classes */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
+
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+
+.touch-target:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.floating-action-btn {
+  position: fixed;
+  bottom: 100px; /* Above bottom navigation */
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+  cursor: pointer;
+  font-size: 24px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 0.3s ease;
+  touch-action: manipulation;
+}
+
+.floating-action-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.swipe-indicator {
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  animation: swipeHint 2s infinite;
+}
+
+@keyframes swipeHint {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+/* Safe area handling for notch devices */
+.safe-area-top {
+  padding-top: max(20px, env(safe-area-inset-top));
+}
+
+.safe-area-bottom {
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+}
+
+.safe-area-left {
+  padding-left: max(20px, env(safe-area-inset-left));
+}
+
+.safe-area-right {
+  padding-right: max(20px, env(safe-area-inset-right));
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+  
+  .floating-action-btn {
+    display: flex;
+  }
+  
+  /* Improve touch targets on mobile */
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  
+  /* Hide scrollbars but keep functionality */
+  .scrollable-content {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollable-content::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* PWA Install Prompt Styles */
+.install-prompt {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--text-light);
+  padding: 12px 20px;
+  z-index: 10000;
+  animation: slideDown 0.3s ease-out;
+}
+
+.install-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+.install-content h4 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  color: var(--text-light);
+}
+
+.install-content p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.install-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.install-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--text-light);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.install-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.dismiss-btn {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.dismiss-btn:hover {
+  opacity: 1;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+/* iOS Safari specific styles */
+@supports (-webkit-touch-callout: none) {
+  .install-prompt {
+    padding-top: max(12px, env(safe-area-inset-top));
+  }
+}
+
+/* Mobile responsive for install prompt */
+@media (max-width: 768px) {
+  .install-content {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  
+  .install-content h4 {
+    font-size: 14px;
+  }
+  
+  .install-content p {
+    font-size: 12px;
+  }
+  
+  .install-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+/* Force Install Screen Styles */
+.force-install-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 10001;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.force-install-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 20px;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  overflow: visible;
+  animation: slideUp 0.5s ease-out;
+  flex-shrink: 0;
+  max-height: none;
+}
+
+.force-install-content {
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.app-icon {
+  margin-bottom: 24px;
+}
+
+.app-icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border-radius: 20px;
+  font-size: 32px;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+}
+
+.force-install-content h1 {
+  margin: 16px 0 8px 0;
+  font-size: 28px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.force-install-content h2 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.install-message {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+.platform-instructions {
+  background: var(--bg-light);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.platform-instructions h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.platform-instructions ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.platform-instructions li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.platform-instructions strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.install-now-btn {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--text-light);
+  border: none;
+  padding: 16px 32px;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 16px;
+  transition: all 0.3s ease;
+}
+
+.install-now-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+}
+
+.install-benefits {
+  background: #f8f9ff;
+  border: 1px solid #e1e5f7;
+  border-radius: var(--border-radius);
+  padding: 24px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.install-benefits h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.install-benefits ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.install-benefits li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.force-install-footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 24px;
+  margin-top: 24px;
+}
+
+.force-install-footer p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.force-install-footer strong {
+  color: var(--error-color);
+  font-weight: 600;
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Mobile responsive for force install screen */
+@media (max-width: 768px) {
+  .force-install-screen {
+    padding: 10px 0;
+    align-items: flex-start;
+  }
+  
+  .force-install-container {
+    margin: 0 10px;
+    max-height: none;
+    width: calc(100% - 20px);
+  }
+  
+  .force-install-content {
+    padding: 24px 20px;
+  }
+  
+  .app-icon-circle {
+    width: 64px;
+    height: 64px;
+    font-size: 24px;
+  }
+  
+  .force-install-content h1 {
+    font-size: 24px;
+  }
+  
+  .force-install-content h2 {
+    font-size: 18px;
+  }
+  
+  .install-message {
+    font-size: 14px;
+  }
+  
+  .platform-instructions {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .install-benefits {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .platform-instructions h3 {
+    font-size: 16px;
+  }
+  
+  .install-benefits h3 {
+    font-size: 16px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .force-install-screen {
+    padding: 5px 0;
+  }
+  
+  .force-install-container {
+    margin: 0 5px;
+    width: calc(100% - 10px);
+  }
+  
+  .force-install-content {
+    padding: 20px 16px;
+  }
+  
+  .app-icon-circle {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+  }
+  
+  .force-install-content h1 {
+    font-size: 20px;
+  }
+  
+  .force-install-content h2 {
+    font-size: 16px;
+  }
+  
+  .install-message {
+    font-size: 13px;
+  }
+  
+  .platform-instructions {
+    padding: 12px;
+  }
+  
+  .install-benefits {
+    padding: 12px;
+  }
 } 

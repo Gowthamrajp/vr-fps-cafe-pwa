@@ -18,9 +18,9 @@ export default function Booking({ user }) {
 
   const gameModes = [
     { value: 'deathmatch', label: 'Deathmatch', price: 300 },
-    { value: 'team-vs-team', label: 'Team vs Team', price: 350 },
     { value: 'battle-royale', label: 'Battle Royale', price: 400 },
-    { value: 'survival', label: 'Survival Mode', price: 320 }
+    { value: 'survival', label: 'Survival Mode', price: 320 },
+    { value: 'free-for-all', label: 'Free for All', price: 280 }
   ];
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export default function Booking({ user }) {
   if (!user) return null;
 
   return (
-    <div className="container" style="max-width: 600px; padding-top: 32px;">
+    <div className="container main-content" style="max-width: 600px; padding-top: 32px;">
       <div className="card">
         <h2>📅 Book Your VR Session</h2>
         
