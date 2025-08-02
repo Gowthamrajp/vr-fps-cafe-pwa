@@ -129,6 +129,13 @@ export default function Navbar({ user, userProfile }) {
               </ul>
             )}
 
+            {/* Public Game Lookup Link */}
+            <div className="public-nav">
+              <a href="/game-lookup" className="nav-link game-lookup-link">
+                🔍 Game Lookup
+              </a>
+            </div>
+
             <div className="navbar-actions">
               {/* Install PWA Button */}
               {showInstallButton && (
@@ -217,6 +224,24 @@ export default function Navbar({ user, userProfile }) {
             <div className="mobile-menu-items">
               <a href="/profile" className="mobile-menu-item" onClick={handleNavClick}>
                 👤 Profile
+              </a>
+              <a href="/" className="mobile-menu-item" onClick={handleNavClick}>
+                🏠 Home
+              </a>
+              <a href="/booking" className="mobile-menu-item" onClick={handleNavClick}>
+                📅 Book Game
+              </a>
+              <a href="/leaderboard" className="mobile-menu-item" onClick={handleNavClick}>
+                🏆 Leaderboard
+              </a>
+              <a href="/stats" className="mobile-menu-item" onClick={handleNavClick}>
+                📊 Stats
+              </a>
+              <a href="/game-lobby" className="mobile-menu-item" onClick={handleNavClick}>
+                🎮 Start Game
+              </a>
+              <a href="/game-lookup" className="mobile-menu-item" onClick={handleNavClick}>
+                🔍 Game Lookup
               </a>
               <button onClick={handleManualUpdate} className="mobile-menu-item update-item">
                 🔄 Force Update

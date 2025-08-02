@@ -361,6 +361,30 @@ h4 { font-size: 1.25rem; }
   color: var(--primary-color);
 }
 
+/* Public Navigation */
+.public-nav {
+  display: flex;
+  align-items: center;
+}
+
+.game-lookup-link {
+  background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-lookup-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  color: white !important;
+}
+
 /* Stats Cards */
 .stats-grid {
   display: grid;

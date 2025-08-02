@@ -12,6 +12,7 @@ import Profile from './pages/Profile';
 import Booking from './pages/Booking';
 import Leaderboard from './pages/Leaderboard';
 import GameLobby from './pages/GameLobby';
+import GameLookup from './pages/GameLookup';
 import Stats from './pages/Stats';
 
 
@@ -500,6 +501,8 @@ export function App() {
         <ProtectedRoute path="/game-lobby">
           <GameLobby user={user} userProfile={userProfile} />
         </ProtectedRoute>
+
+        <GameLookup path="/game-lookup" />
         
         <ProtectedRoute path="/stats">
           <Stats user={user} userProfile={userProfile} />

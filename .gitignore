@@ -37,10 +37,23 @@ logs/
 
 # Firebase
 .firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
 
 # Cache
 .cache/
 
 # Temporary files
 .tmp/
-temp/ 
+temp/
+
+# Emulator data
+emulator-data/
+
+# Service account keys
+*-service-account.json
+service-account.json
+
+# Deployment artifacts
+.deploy/ 
